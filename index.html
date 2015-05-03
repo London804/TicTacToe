@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>TicTacToe</title>
+    <style>
+        table {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            border-spacing: 0;
+        }
+        #row1, #row2, #row3 {
+            background: grey;
+        }
+        #row1 td:nth-child(odd), #row3 td:nth-child(odd), #row2 td:nth-child(even) {
+            background: #dfdfdf;
+        }
+        td {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var playerOne = prompt('What is your name?'),
+                playerTwo = prompt('What is your name?'),
+                activePlayer = Math.random() <= 0.5 ?  playerOne : playerTwo;
+
+            instruct(activePlayer + " is first");
+
+            $('td').click(function(){
+                if(activePlayer == playerOne){
+                    if($(this).text() == ''){
+                        $(this).text('x');
+                    } else {
+                        alert('that box has already been used.');
+                        return;
+                    }
+                    activePlayer = playerTwo;
+                    instruct(activePlayer + ' is up');
+                } else {
+                    if($(this).text() == ''){
+                        $(this).text('o');
+                    } else {
+                        alert('that box has already been used.');
+                        return false;
+                    }
+                    activePlayer = playerOne;
+                    instruct(activePlayer + ' is up');
+                }
+            });
+
+        });
+        function instruct(message){
+            $('#instructions').text(message);
+        }
+
+
+    </script>
+</head>
+<body>
+<section>
+    <h1 id="instructions"></h1>
+
+    <table style="">
+        <tr id="row1">
+            <td id="one"></td>
+            <td id="two"></td>
+            <td id="three"></td>
+        </tr>
+        <tr id="row2">
+            <td id="four"></td>
+            <td id="five"></td>
+            <td id="six"></td>
+        </tr>
+        <tr id="row3">
+            <td id="seven"></td>
+            <td id="eight"></td>
+            <td id="nine"></td>
+        </tr>
+    </table>
+</section>
+
+
+</body>
+</html>
