@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>TicTacToe</title>
     <style>
+        body {
+            background: #fafafa;
+        }
         table {
             width: 300px;
             height: 300px;
@@ -20,6 +23,11 @@
             width: 100px;
             height: 100px;
             text-align: center;
+            font-size: 40px;
+        }
+        section {
+            max-width: 700px;
+            margin: 0 auto;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -35,6 +43,7 @@
                 if(activePlayer == playerOne){
                     if($(this).text() == ''){
                         $(this).text('x');
+                        checkWinner();
                     } else {
                         alert('that box has already been used.');
                         return;
@@ -46,17 +55,101 @@
                         $(this).text('o');
                     } else {
                         alert('that box has already been used.');
-                        return false;
+                        return;
                     }
                     activePlayer = playerOne;
                     instruct(activePlayer + ' is up');
                 }
             });
 
+            function checkWinner() {
+                var one = '#one',
+                    two = '#two',
+                    three = '#three',
+                    four = '#four',
+                    five = '#five',
+                    six = '#six',
+                    seven = '#seven',
+                    eight = '#eight',
+                    nine = '#nine';
+
+                //check for win top row
+                if($(one).text() == 'x') {
+                    console.log('match');
+                    if($(one).text() == $(two).text()){
+                        if($(one).text() == $(three).text()) {
+                            alert(activePlayer + ' wins!');
+                        }
+                    }
+                }
+
+                //middle row
+                if($(four).text() == 'x') {
+                    console.log('match');
+                    if($(four).text() == $(five).text()){
+                        if($(four).text() == $(six).text()) {
+                            alert(activePlayer + ' wins!');
+                        }
+                        console.log(four + five);
+                    }
+                }
+               //bottom row
+                if($(seven).text() == 'x') {
+                    console.log('match');
+                    if($(seven).text() == $(eight).text()){
+                        if($(seven).text() == $(nine).text()) {
+                            alert(activePlayer + ' wins!');
+                        }
+                    }
+                }
+                //second column
+                if($(two).text() == 'x') {
+                    console.log('match');
+                    if($(two).text() == $(five).text()){
+                        if($(two).text() == $(eight).text()) {
+                            alert(activePlayer + ' wins!');
+                        }
+                    }
+                }
+                //third column
+                if($(three).text() == 'x') {
+                    console.log('match');
+                    if($(three).text() == $(six).text()){
+                        if($(three).text() == $(nine).text()) {
+                            alert(activePlayer + ' wins!');
+                        }
+                    }
+                }
+
+//                //top-left diagonal
+                if($(one).text() == 'x') {
+                    console.log('match');
+                    if($(one).text() == $(five).text()){
+                        if($(one).text() == $(nine).text()) {
+                            alert(activePlayer + ' wins!');
+                        }
+                    }
+                }
+                
+                //top-right diagonal
+                if($(three).text() == 'x') {
+                    console.log('match');
+                    if($(three).text() == $(five).text()){
+                        if($(three).text() == $(seven).text()) {
+                            alert(activePlayer + ' wins!');
+                        }
+                    }
+                }
+
+
+            }
+
         });
         function instruct(message){
             $('#instructions').text(message);
         }
+
+
 
 
     </script>
