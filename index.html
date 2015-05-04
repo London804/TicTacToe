@@ -53,6 +53,7 @@
                 } else {
                     if($(this).text() == ''){
                         $(this).text('o');
+                        checkWinner();
                     } else {
                         alert('that box has already been used.');
                         return;
@@ -74,7 +75,7 @@
                     nine = '#nine';
 
                 //check for win top row
-                if($(one).text() == 'x') {
+                if($(one).text() !== '') {
                     console.log('match');
                     if($(one).text() == $(two).text()){
                         if($(one).text() == $(three).text()) {
@@ -84,7 +85,7 @@
                 }
 
                 //middle row
-                if($(four).text() == 'x') {
+                if($(four).text() !== '') {
                     console.log('match');
                     if($(four).text() == $(five).text()){
                         if($(four).text() == $(six).text()) {
@@ -94,7 +95,7 @@
                     }
                 }
                //bottom row
-                if($(seven).text() == 'x') {
+                if($(seven).text() !== '') {
                     console.log('match');
                     if($(seven).text() == $(eight).text()){
                         if($(seven).text() == $(nine).text()) {
@@ -102,8 +103,18 @@
                         }
                     }
                 }
+                //first column
+                if($(one).text() !== '') {
+                    console.log('match');
+                    if($(one).text() == $(four).text()){
+                        if($(one).text() == $(seven).text()) {
+                            alert(activePlayer + ' wins!');
+                        }
+                    }
+                }
+
                 //second column
-                if($(two).text() == 'x') {
+                if($(two).text() !== '') {
                     console.log('match');
                     if($(two).text() == $(five).text()){
                         if($(two).text() == $(eight).text()) {
@@ -112,7 +123,7 @@
                     }
                 }
                 //third column
-                if($(three).text() == 'x') {
+                if($(three).text() !== '') {
                     console.log('match');
                     if($(three).text() == $(six).text()){
                         if($(three).text() == $(nine).text()) {
@@ -122,7 +133,7 @@
                 }
 
 //                //top-left diagonal
-                if($(one).text() == 'x') {
+                if($(one).text() !== '') {
                     console.log('match');
                     if($(one).text() == $(five).text()){
                         if($(one).text() == $(nine).text()) {
@@ -132,7 +143,7 @@
                 }
                 
                 //top-right diagonal
-                if($(three).text() == 'x') {
+                if($(three).text() !== '') {
                     console.log('match');
                     if($(three).text() == $(five).text()){
                         if($(three).text() == $(seven).text()) {
