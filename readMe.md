@@ -1,1 +1,1 @@
-TicTacToe game currently in progress.
+Tic-Tac-Toe game, functioning but still in progress. 
